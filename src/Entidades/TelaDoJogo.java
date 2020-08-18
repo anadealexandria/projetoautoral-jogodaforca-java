@@ -1,16 +1,12 @@
 package Entidades;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+public class TelaDoJogo extends RegrasDoJogo{
 
-public class TelaDoJogo {
-
-//	static void inicio(String palavra, String nomeDoJogador) {
-//	RegrasDoJogo rd=new RegrasDoJogo();
-//	List<String> letra= new ArrayList<>();
-//	 = Arrays.asList(rd.getPalavra().split(""));
-//	letra.add();
-//		
-//	}
+  RegrasDoJogo regrasDoJogo;	
+  
+  public void mostrarNaTela() {
+	  for (int i=0; i<regrasDoJogo.getNumeroDeLetras(); i++) {
+			System.out.print(" _ ");
+		}
+  }
 }
