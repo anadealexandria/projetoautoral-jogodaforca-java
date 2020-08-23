@@ -1,28 +1,46 @@
 package Entidades;
 
+import java.util.ArrayList;
+import java.util.List;
 
+public class TelaDoJogo extends RegrasDoJogo {
 
-public class TelaDoJogo extends RegrasDoJogo{
+	RegrasDoJogo regrasDoJogo;
+	private int numeroDeLetras;
+	List<String> tracinhos = new ArrayList<>();
 
-  RegrasDoJogo regrasDoJogo;	
-  private int numeroDeLetras;
-  
-  
-  public int getNumeroDeLetras() {
+	public int getNumeroDeLetras() {
 		return numeroDeLetras;
 	}
-  
-  public void setNumeroDeLetras(int numeroDeLetras) {
-		this.numeroDeLetras=numeroDeLetras;
+
+	public void setNumeroDeLetras(int numeroDeLetras) {
+		this.numeroDeLetras = numeroDeLetras;
 	}
-  
-  public void tracinhosNaTela() {
-	  for (int i=0; i<getNumeroDeLetras(); i++) {
-			System.out.print(" _ ");
+
+	public List<String> tracinhosNaTela(List<String> letras, String letra) {
+		String traco = " _ ";
+
+		if (tracinhos.isEmpty()) {
+			for (int i = 0; i < letras.size(); i++) {
+				tracinhos.add(traco);
+			}
 		}
-  }
-  
-  public void limpaConsole() {
-	  System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-  }
+
+		for (int i = 0; i < letras.size(); i++) {
+
+			String caractere = letras.get(i);
+			if (caractere.equals(letra)) {
+				traco=traco.replace(traco, letra);
+				tracinhos.set(i, letra);
+
+			}
+
+		}
+
+		return tracinhos;
+	}
+
+	public void limpaConsole() {
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	}
 }
