@@ -55,14 +55,17 @@ public class Principal {
 			System.out.println();
 			System.out.println();
 			
-			for(int i=0 ; i<palavraArray.length+2 ; i++) {
+			for(int i=0 ; i<palavraArray.length+2 ; i++) {  
 			System.out.printf("Jogador(a) %s, digite uma letra: ", jogada1.mostrarJogadorOponente());
 			letra = entrada.nextLine();
+			jogada1.letraCorrespondente(letras, letra);
 			//jogada1.setLetra(letra);
 
 			// Verificando se a letra corresponde a alguma letra da palavra contida na lista
 			System.out.println(jogo.tracinhosNaTela(letras, letra));
+			System.out.println();
 			}
+			jogada1.limpandoPalavra(letras);
 			
 			int soma = contador += 1;
 			jogada1.setContador(soma);

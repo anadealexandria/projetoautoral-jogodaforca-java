@@ -4,7 +4,7 @@ import java.util.List;
 
 public class RegrasDoJogo {
 
-	TelaDoJogo telaDoJogo;
+	
 	private String palavra;
 	private String letra;
 	private String nomeDoJogador1;
@@ -13,13 +13,6 @@ public class RegrasDoJogo {
 	private String jogadorAtual;
 	private int contador;
 
-	public String getLetra() {
-		return letra;
-	}
-
-	public void setLetra(String letra) {
-		this.letra = letra;
-	}
 
 	public RegrasDoJogo() {
 
@@ -30,6 +23,13 @@ public class RegrasDoJogo {
 		this.nomeDoJogador1 = nomeDoJogador1;
 	}
 
+	public String getLetra() {
+		return letra;
+	}
+	
+	public void setLetra(String letra) {
+		this.letra = letra;
+	}
 	public String getPalavra() {
 		return palavra;
 	}
@@ -88,18 +88,35 @@ public class RegrasDoJogo {
 	}
 
 	// Método para indicar se a letra na lista é uma letra correspondente ao que foi
-	// digitado pelo usuário
-	public String letraCorrespondente(List<String> letras, String letra) {
-				
+	// digitado pelo usuário, caso não seja correspondente deixar a mensagem de que a letra não existe na palavra
+	public boolean letraCorrespondente(List<String> letras, String letra) {
+		TelaDoJogo telaDoJogo = new TelaDoJogo();
+		boolean verificador=false;
 		for (int i=0 ; i<letras.size() ; i++) {
 			String caractere = letras.get(i);
 			if (caractere.equals(letra)) {
-				return letra;
-
+				verificador=true;
+				break;
 			}
 		}
+		if(verificador) {
+			telaDoJogo.tracinhosNaTela(letras, letra);
+			return true;
+			
+		} else {
+			System.out.println("Não existe essa letra na palavra! ");
+			return false;
+			
+		}
 
-		return "Não existe essa letra! ";
 
 	}	
+	
+	public void limpandoPalavra(List<String> letras) {
+		TelaDoJogo telaDoJogo = new TelaDoJogo();
+		for(int i=0 ; i<letras.size() ; i++) {
+			
+			telaDoJogo.tracinhos.remove(letras.get(i));
+		}
+	}
 }

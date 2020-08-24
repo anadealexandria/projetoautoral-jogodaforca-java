@@ -19,7 +19,7 @@ public class TelaDoJogo extends RegrasDoJogo {
 
 	public List<String> tracinhosNaTela(List<String> letras, String letra) {
 		String traco = " _ ";
-
+		String caractere="";
 		if (tracinhos.isEmpty()) {
 			for (int i = 0; i < letras.size(); i++) {
 				tracinhos.add(traco);
@@ -28,14 +28,15 @@ public class TelaDoJogo extends RegrasDoJogo {
 
 		for (int i = 0; i < letras.size(); i++) {
 
-			String caractere = letras.get(i);
+			caractere = letras.get(i);
 			if (caractere.equals(letra)) {
-				traco=traco.replace(traco, letra);
+				traco = traco.replace(traco, letra);
 				tracinhos.set(i, letra);
 
 			}
 
-		}
+		}	
+		
 
 		return tracinhos;
 	}
