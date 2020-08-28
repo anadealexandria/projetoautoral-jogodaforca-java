@@ -3,23 +3,23 @@ package Entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TelaDoJogo extends RegrasDoJogo {
+public class TelaDoJogo {
 
-	RegrasDoJogo regrasDoJogo;
-	private int numeroDeLetras;
+	private int numeroDeTentativas;
 	List<String> tracinhos = new ArrayList<>();
 
-	public int getNumeroDeLetras() {
-		return numeroDeLetras;
+	public int getNumeroDeTentivas() {
+		return numeroDeTentativas;
 	}
 
-	public void setNumeroDeLetras(int numeroDeLetras) {
-		this.numeroDeLetras = numeroDeLetras;
+	public void setNumeroDeTentivas(int numeroDeTentivas) {
+		this.numeroDeTentativas = numeroDeTentivas;
 	}
 
 	public List<String> tracinhosNaTela(List<String> letras, String letra) {
 		String traco = " _ ";
-		String caractere="";
+		String caractere = "";
+
 		if (tracinhos.isEmpty()) {
 			for (int i = 0; i < letras.size(); i++) {
 				tracinhos.add(traco);
@@ -35,13 +35,18 @@ public class TelaDoJogo extends RegrasDoJogo {
 
 			}
 
-		}	
-		
+		}
 
 		return tracinhos;
 	}
 
 	public void limpaConsole() {
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	}
+
+	public String numeroDeTentativas(int i) {
+		numeroDeTentativas = tracinhos.size() - i;
+
+		return "Você tem " + numeroDeTentativas + " tentativas!";
 	}
 }

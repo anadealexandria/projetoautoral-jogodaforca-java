@@ -4,34 +4,23 @@ import java.util.List;
 
 public class RegrasDoJogo {
 
-	
-	private String palavra;
-	private String letra;
+	private TelaDoJogo telaDoJogo;
+
+	private int contador;
 	private String nomeDoJogador1;
 	private String nomeDoJogador2;
-	private int numeroDeTentivas;
 	private String jogadorAtual;
-	private int contador;
-
 
 	public RegrasDoJogo() {
-
+		this.telaDoJogo = new TelaDoJogo();
 	}
 
-	public RegrasDoJogo(String palavra, String nomeDoJogador1) {
-		this.palavra = palavra;
-		this.nomeDoJogador1 = nomeDoJogador1;
+	public TelaDoJogo getTelaDoJogo() {
+		return telaDoJogo;
 	}
 
-	public String getLetra() {
-		return letra;
-	}
-	
-	public void setLetra(String letra) {
-		this.letra = letra;
-	}
-	public String getPalavra() {
-		return palavra;
+	public void setTelaDoJogo(TelaDoJogo telaDoJogo) {
+		this.telaDoJogo = telaDoJogo;
 	}
 
 	public String getNomeDoJogador1() {
@@ -48,10 +37,6 @@ public class RegrasDoJogo {
 
 	public String getNomeDoJogador2() {
 		return nomeDoJogador2;
-	}
-
-	public int getNumeroDeTentivas() {
-		return numeroDeTentivas;
 	}
 
 	public String getJogadorAtual() {
@@ -87,36 +72,55 @@ public class RegrasDoJogo {
 		}
 	}
 
-	// Método para indicar se a letra na lista é uma letra correspondente ao que foi
-	// digitado pelo usuário, caso não seja correspondente deixar a mensagem de que a letra não existe na palavra
 	public boolean letraCorrespondente(List<String> letras, String letra) {
-		TelaDoJogo telaDoJogo = new TelaDoJogo();
-		boolean verificador=false;
-		for (int i=0 ; i<letras.size() ; i++) {
+
+		boolean verificador = false;
+		for (int i = 0; i < letras.size(); i++) {
 			String caractere = letras.get(i);
 			if (caractere.equals(letra)) {
-				verificador=true;
+				verificador = true;
 				break;
 			}
 		}
-		if(verificador) {
+		if (verificador) {
 			telaDoJogo.tracinhosNaTela(letras, letra);
 			return true;
-			
+
 		} else {
 			System.out.println("Não existe essa letra na palavra! ");
 			return false;
-			
+
 		}
 
+	}
 
-	}	
-	
+	public boolean verificaçãoDeListaPreenchida(List<String> letras) {
+
+		if (letras.equals(telaDoJogo.tracinhos)) {
+			return true;
+
+		} else {
+			return false;
+		}
+
+	}
+
+	public String verificacaoDaVitoria(List<String> letras) {
+
+		if (letras.equals(telaDoJogo.tracinhos)) {
+			return "Você ganhou! Parabéns!";
+		} else {
+			return "Quem sabe não se sai melhor na outra rodada! Não desanime!";
+		}
+
+	}
+
 	public void limpandoPalavra(List<String> letras) {
-		TelaDoJogo telaDoJogo = new TelaDoJogo();
-		for(int i=0 ; i<letras.size() ; i++) {
-			
+
+		for (int i = 0; i < letras.size(); i++) {
+
 			telaDoJogo.tracinhos.remove(letras.get(i));
 		}
 	}
+
 }
