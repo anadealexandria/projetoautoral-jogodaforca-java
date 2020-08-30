@@ -45,7 +45,7 @@ public class TelaDoJogo {
 	}
 
 	public String numeroDeTentativas(int i) {
-		numeroDeTentativas = tracinhos.size() - i;
+		numeroDeTentativas = tracinhos.size() + 1 - i;
 
 		return "Você tem " + numeroDeTentativas + " tentativas!";
 	}

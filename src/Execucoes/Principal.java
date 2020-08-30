@@ -29,7 +29,7 @@ public class Principal {
 
 			System.out.printf("Jogador(a) %s, digite a palavra: ", jogada1.mostrarJogadorAtual());
 
-			String palavra = entrada.nextLine();
+			String palavra = entrada.nextLine().toLowerCase();
 			String palavraArray[] = palavra.split("");
 			List<String> letras = new ArrayList<>();
 			for (String caractere : palavraArray) {
@@ -47,7 +47,8 @@ public class Principal {
 
 			for (int i = 0; i < palavraArray.length + 2; i++) {
 				System.out.printf("Jogador(a) %s, digite uma letra: ", jogada1.mostrarJogadorOponente());
-				letra = entrada.nextLine();
+				letra = entrada.nextLine().toLowerCase();
+				
 				jogada1.letraCorrespondente(letras, letra);
 
 				System.out.println(jogada1.getTelaDoJogo().tracinhosNaTela(letras, letra));
